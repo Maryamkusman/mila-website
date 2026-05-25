@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+{% block title %}Mila — AI Built by Women, for Women{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero__blobs">
+    <div class="blob blob--1"></div>
+    <div class="blob blob--2"></div>
+  </div>
+  <div class="container hero__inner">
+    <div class="hero__text">
+      <span class="label">Women-Led AI Consulting</span>
+      <h1 class="hero__headline">
+        AI Built by Women,<br>
+        <em>for Women Who Mean Business.</em>
+      </h1>
+      <p class="hero__sub">
+        Mila creates custom AI solutions for women-owned businesses —
+        so you can automate the grunt work, scale with confidence,
+        and stay in your zone of genius.
+      </p>
+      <div class="hero__ctas">
+        <a href="{{ url_for('contact') }}" class="btn btn--lg">Book a Free Consultation</a>
+        <a href="{{ url_for('services') }}" class="btn btn--ghost btn--lg">See Our Services →</a>
+      </div>
+    </div>
+    <div class="hero__visual">
+      <div class="hero__card glass">
+        <div class="hero__card-header">
+          <span class="status-dot"></span>
+          <span>mila assistant · online</span>
+        </div>
+        <div class="chat">
+          <div class="chat__bubble chat__bubble--bot">
+            Hi! I'm your AI assistant. How can I help your business today? ✨
+          </div>
+          <div class="chat__bubble chat__bubble--user">
+            I need help automating my customer emails.
+          </div>
+          <div class="chat__bubble chat__bubble--bot">
+            Perfect. I can handle that — let me show you how.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF STRIP -->
+<section class="strip">
+  <div class="container strip__inner">
+    <span>Trusted by women-owned businesses in:</span>
+    <div class="strip__tags">
+      <span class="tag">E-commerce</span>
+      <span class="tag">Wellness</span>
+      <span class="tag">Professional Services</span>
+      <span class="tag">Fashion</span>
+      <span class="tag">Coaching</span>
+      <span class="tag">Real Estate</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES PREVIEW -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="section__header">
+      <span class="label">What We Build</span>
+      <h2>AI that actually works for your business</h2>
+      <p>We don't do cookie-cutter. Every solution is built around how <em>you</em> work.</p>
+    </div>
+    <div class="grid grid--3">
+      {% for service in services %}
+      <div class="card reveal">
+        <div class="card__icon">{{ service.icon }}</div>
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.short }}</p>
+        <a href="{{ url_for('services') }}" class="card__link">Learn more →</a>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="section__cta">
+      <a href="{{ url_for('services') }}" class="btn btn--outline">See All Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section section--pink" id="how">
+  <div class="container">
+    <div class="section__header">
+      <span class="label">The Process</span>
+      <h2>From "what even is AI?" to live in weeks</h2>
+      <p>We handle the complexity. You just tell us what you need.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step__num">01</div>
+        <h3>Discovery Call</h3>
+        <p>We learn your business, your pain points, and your goals. Free, no pressure.</p>
+      </div>
+      <div class="step__arrow">→</div>
+      <div class="step reveal">
+        <div class="step__num">02</div>
+        <h3>Custom Proposal</h3>
+        <p>We map out exactly what we'd build, how long it takes, and what it costs.</p>
+      </div>
+      <div class="step__arrow">→</div>
+      <div class="step reveal">
+        <div class="step__num">03</div>
+        <h3>We Build It</h3>
+        <p>Our team builds, tests, and refines your AI solution — with you in the loop.</p>
+      </div>
+      <div class="step__arrow">→</div>
+      <div class="step reveal">
+        <div class="step__num">04</div>
+        <h3>You Launch</h3>
+        <p>We deploy, train your team, and stick around for support. You go grow.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / MISSION -->
+<section class="section" id="about">
+  <div class="container about__inner">
+    <div class="about__visual reveal">
+      <div class="about__badge">AI Engineer</div>
+      <div class="about__card glass">
+        <p class="about__quote">"The AI industry builds tools for everyone — but rarely <em>with</em> the women who'll actually use them. Mila exists to change that."</p>
+        <div class="about__sig">
+          <div>
+            <strong>Maryam</strong>
+            <span>Founder & AI Engineer, Mila</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about__text reveal">
+      <span class="label">Our Mission</span>
+      <h2>Built different, on purpose.</h2>
+      <p>Mila was founded on a simple belief: women-owned businesses deserve AI that's built <em>with them</em>, not just sold to them.</p>
+      <p>We're AI engineers who also happen to be the customer. We understand the grind, the growth goals, and the "I don't have time for this" moments — because we've lived them.</p>
+      <p>When you work with Mila, you get a team that's as invested in your success as you are.</p>
+      <a href="{{ url_for('contact') }}" class="btn">Let's Talk</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="container cta-banner__inner">
+    <h2>Ready to put AI to work in your business?</h2>
+    <p>Book a free 30-minute discovery call. No jargon, no hard sell — just a real conversation about what's possible.</p>
+    <a href="{{ url_for('contact') }}" class="btn btn--white btn--lg">Book My Free Call</a>
+  </div>
+</section>
+
+{% endblock %}
