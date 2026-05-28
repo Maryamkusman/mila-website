@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template, request, flash, redirect, url_for
+from flask import Flask, flash, render_template, request
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "dev-only-not-for-production")
@@ -107,21 +107,10 @@ def services():
     return render_template("services.html", services=SERVICES)
 
 
-@app.route("/contact", methods=["GET", "POST"])
+@app.route("/contact")
 def contact():
-    if request.method == "POST":
-        name = request.form.get("name", "").strip()
-        email = request.form.get("email", "").strip()
-        business = request.form.get("business", "").strip()
-        message = request.form.get("message", "").strip()
-
-        if not name or not email or not message:
-            flash("Please fill in all required fields.", "error")
-        else:
-            # TODO: wire up email sending or a CRM here
-            flash(f"Thanks {name}! We'll be in touch within 24 hours. ✨", "success")
-            return redirect(url_for("contact"))
-
+    if request.args.get("sent"):
+        flash("Thanks! We'll be in touch within 24 hours. ✨", "success")
     return render_template("contact.html")
 
 
