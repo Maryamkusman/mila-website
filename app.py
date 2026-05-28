@@ -1,7 +1,9 @@
+import os
+
 from flask import Flask, render_template, request, flash, redirect, url_for
 
 app = Flask(__name__)
-app.secret_key = "mila-change-this-in-production"
+app.secret_key = os.environ.get("SECRET_KEY", "dev-only-not-for-production")
 
 GENERAL_SOLUTIONS = [
     {
@@ -124,7 +126,6 @@ def contact():
 
 
 if __name__ == "__main__":
-    import os
     port = int(os.environ.get('PORT', 5000))
     debug = os.environ.get('FLASK_ENV') == 'development'
     app.run(host='0.0.0.0', port=port, debug=debug)
